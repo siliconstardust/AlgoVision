@@ -15,19 +15,37 @@ export default function ArrayBars({ array, comparing = [], sortedFrom = null, do
     return '0 0 6px rgba(59,130,246,0.4)';
   };
 
+  const fontSize = array.length > 40 ? '7px' : array.length > 25 ? '9px' : '11px';
+
   return (
-    <div style={{ height: '300px' }} className="flex items-end justify-center gap-1 w-full px-2">
+    <div style={{ height: '320px' }} className="flex items-end justify-center gap-1 w-full px-2">
       {array.map((val, idx) => (
         <div
           key={idx}
-          className={`rounded-t-sm bg-gradient-to-t ${getColor(idx)} bar-transition`}
+          className="flex flex-col items-center justify-end"
           style={{
-            height: `${Math.max((val / max) * 100, 2)}%`,
+            height: '100%',
             width: `${Math.max(100 / array.length - 1, 4)}%`,
             minWidth: '3px',
-            boxShadow: getShadow(idx),
           }}
-        />
+        >
+          {/* Number label above the bar */}
+          <span
+            className="text-slate-300 font-medium mb-0.5 leading-none"
+            style={{ fontSize }}
+          >
+            {val}
+          </span>
+
+          {/* The bar itself */}
+          <div
+            className={`w-full rounded-t-sm bg-gradient-to-t ${getColor(idx)} bar-transition`}
+            style={{
+              height: `${Math.max((val / max) * 85, 2)}%`,
+              boxShadow: getShadow(idx),
+            }}
+          />
+        </div>
       ))}
     </div>
   );
