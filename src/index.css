@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    background: #0a0e1a;
+    color: #e2e8f0;
+    font-family: 'Inter', system-ui, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .glow-blue { box-shadow: 0 0 20px rgba(99, 179, 237, 0.3); }
+  .glow-purple { box-shadow: 0 0 20px rgba(167, 139, 250, 0.3); }
+  .text-glow { text-shadow: 0 0 20px rgba(99, 179, 237, 0.5); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0e1a; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* Smooth bar transitions */
+.bar-transition { transition: height 0.15s ease, background-color 0.2s ease; }
+
+/* Pulse animation for active elements */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(99, 179, 237, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(99, 179, 237, 0.8); }
+}
+.pulse-glow { animation: pulse-glow 1.5s ease-in-out infinite; }
